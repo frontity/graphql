@@ -35,5 +35,4 @@ type Setting @model {
   package: Package @relation(name: "SettingOnPackage")
   site: Site @relation(name: "SiteOnSetting")
   value: Json!
-  data: Json!
 }
