@@ -1,3 +1,4 @@
 targets:
   prod: shared-eu-west-1/cjjqzk6lx9m7501911v7bdg41
-  default: prod
+  stage: shared-eu-west-1/cjou6h91la19w0124exf80baw
+  default: stage
