@@ -1,7 +1,8 @@
 {
-  "name": "graphcool",
-  "version": "1.0.0",
+  "name": "frontity-graphql",
+  "version": "0.0.1",
   "description": "My Graphcool Service",
+  "private": true,
   "dependencies": {
     "@types/bcryptjs": "^2.4.1",
     "@types/validator": "^6.3.0",
