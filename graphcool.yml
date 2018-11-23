@@ -1,0 +1,61 @@
+# In the types.graphql you define your data schema
+types: ./types.graphql
+
+functions:
+  signup:
+    type: resolver
+    schema: src/email-password/signup.graphql
+    handler:
+      code: src/email-password/signup.ts
+
+  authenticate:
+    type: resolver
+    schema: src/email-password/authenticate.graphql
+    handler:
+      code: src/email-password/authenticate.ts
+
+  loggedInUser:
+    type: resolver
+    schema: src/email-password/loggedInUser.graphql
+    handler:
+      code: src/email-password/loggedInUser.ts
+
+  initSettings:
+    type: operationAfter
+    operation: Site.create
+    handler:
+      code: src/site/initSettings.js
+
+# Model/Relation permissions are used to limit the API access
+# To take the burden of thinking about those while development, we
+# preconfigured the wildcard ("*") permission that allows everything
+# Read more here:
+# https://www.graph.cool/docs/reference/auth/authorization/overview-iegoo0heez
+permissions:
+  - operation: Site.read
+    authenticated: true
+    query: src/site/isSiteOwner.graphql
+
+  - operation: Package.read
+    authenticated: true
+
+  - operation: Setting.read
+    authenticated: true
+    query: src/site/isSettingOwner.graphql
+
+  - operation: Setting.update
+    authenticated: true
+    query: src/site/isSettingOwner.graphql
+
+  - operation: User.read
+    authenticated: true
+    query: src/site/isUser.graphql
+
+  - operation: User.update
+    authenticated: true
+    query: src/site/isUser.graphql
+# Your root tokens used for functions to get full access to the API
+# Read more here:
+# https://www.graph.cool/docs/reference/auth/authentication/authentication-tokens-eip7ahqu5o
+# rootTokens:
+#   - mytoken

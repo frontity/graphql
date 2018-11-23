@@ -1,0 +1,43 @@
+type User @model {
+  # Required system field:
+  id: ID! @isUnique
+
+  # Optional system fields (remove if not needed):
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
+  name: String!
+  email: String! @isUnique
+  password: String!
+  role: Role! @defaultValue(value: USER)
+  sites: [Site!]! @relation(name: "UserOnSite")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+type Site @model {
+  id: ID! @isUnique
+  siteId: String!
+  url: String!
+  users: [User!]! @relation(name: "UserOnSite")
+  settings: [Setting!]! @relation(name: "SiteOnSetting")
+}
+
+type Package @model {
+  id: ID! @isUnique
+  name: String!
+  namespace: String!
+  settings: [Setting!]! @relation(name: "SettingOnPackage")
+}
+
+type Setting @model {
+  id: ID! @isUnique
+  active: Boolean! @defaultValue(value: true)
+  package: Package @relation(name: "SettingOnPackage")
+  site: Site @relation(name: "SiteOnSetting")
+  value: Json!
+  data: Json!
+}
