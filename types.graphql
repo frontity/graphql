@@ -34,5 +34,5 @@ type Setting @model {
   active: Boolean! @defaultValue(value: true)
   package: Package @relation(name: "SettingOnPackage")
   site: Site @relation(name: "SiteOnSetting")
-  value: Json!
+  data: Json! @rename(oldName: "value")
 }
