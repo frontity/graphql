@@ -20,7 +20,7 @@ type Site @model {
   url: String!
   users: [User!]! @relation(name: "UserOnSite")
   settings: [Setting!]! @relation(name: "SiteOnSetting")
-  data: Json! @defaultValue(value: "{}") @migrationValue(value: "{}")
+  data: Json! @defaultValue(value: "{}")
 }
 
 type Package @model {
