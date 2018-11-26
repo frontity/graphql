@@ -24,7 +24,7 @@ type Site @model {
 
 type Package @model {
   id: ID! @isUnique
-  name: String!
+  name: String! @isUnique
   namespace: String!
   settings: [Setting!]! @relation(name: "SettingOnPackage")
 }
