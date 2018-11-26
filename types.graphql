@@ -16,7 +16,7 @@ type User @model {
 
 type Site @model {
   id: ID! @isUnique
-  siteId: String!
+  siteId: String! @isUnique
   url: String!
   users: [User!]! @relation(name: "UserOnSite")
   settings: [Setting!]! @relation(name: "SiteOnSetting")
