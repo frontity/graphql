@@ -1,3 +1,8 @@
+enum Role {
+  ADMIN
+  USER
+}
+
 type User @model {
   id: ID! @isUnique
   createdAt: DateTime!
@@ -9,23 +14,17 @@ type User @model {
   sites: [Site!]! @relation(name: "UserOnSite")
 }
 
-enum Role {
-  ADMIN
-  USER
-}
-
 type Site @model {
   id: ID! @isUnique
-  siteId: String!
+  siteId: String! @isUnique
   url: String!
   users: [User!]! @relation(name: "UserOnSite")
   settings: [Setting!]! @relation(name: "SiteOnSetting")
-  data: Json! @defaultValue(value: "{}")
 }
 
 type Package @model {
   id: ID! @isUnique
-  name: String!
+  name: String! @isUnique
   namespace: String!
   settings: [Setting!]! @relation(name: "SettingOnPackage")
 }
