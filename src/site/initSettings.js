@@ -24,7 +24,7 @@ async function createSetting(api, siteId, packageId) {
   const mutation = `
     mutation CreateSetting($siteId: ID!, $packageId: ID!) {
       createSetting(
-        value: "{}"
+        data: "{}"
         packageId: $packageId
         siteId: $siteId
       ) {
