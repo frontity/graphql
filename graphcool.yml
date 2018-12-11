@@ -32,12 +32,20 @@ functions:
 # Read more here:
 # https://www.graph.cool/docs/reference/auth/authorization/overview-iegoo0heez
 permissions:
+  # public operations
+
+  - operation: Setting.create
+  - operation: Package.read
+  - operation: Site.create
+  - operation: Site.read
+    fields: [id]
+
+  # protected operations
+
   - operation: Site.read
     authenticated: true
     query: src/site/isSiteOwner.graphql
 
-  - operation: Package.read
-    authenticated: true
 
   - operation: Setting.read
     authenticated: true
