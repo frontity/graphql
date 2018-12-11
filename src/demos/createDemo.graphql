@@ -1,0 +1,11 @@
+type CreateDemoPayload {
+  siteId: String!
+}
+
+extend type Mutation {
+  createDemo(
+    siteId: String!
+    url: String!
+    settings: [Json!]!
+  ): CreateDemoPayload
+}

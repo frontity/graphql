@@ -20,6 +20,12 @@ functions:
     handler:
       code: src/email-password/loggedInUser.ts
 
+  createDemo:
+    type: resolver
+    schema: src/demos/createDemo.graphql
+    handler:
+      code: src/demos/createDemo.js
+
 # Model/Relation permissions are used to limit the API access
 # To take the burden of thinking about those while development, we
 # preconfigured the wildcard ("*") permission that allows everything
@@ -28,16 +34,9 @@ functions:
 permissions:
   # public operations
 
-  - operation: Setting.create
-    query: src/setting/permitSetting.graphql
-
   - operation: Package.read
-  - operation: Site.create
   - operation: Site.read
     fields: [id]
-
-  - operation: SettingOnPackage.connect
-  - operation: SiteOnSetting.connect
 
   # protected operations
 
