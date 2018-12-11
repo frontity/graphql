@@ -29,10 +29,15 @@ permissions:
   # public operations
 
   - operation: Setting.create
+    query: src/setting/permitSetting.graphql
+
   - operation: Package.read
   - operation: Site.create
   - operation: Site.read
     fields: [id]
+
+  - operation: SettingOnPackage.connect
+  - operation: SiteOnSetting.connect
 
   # protected operations
 
